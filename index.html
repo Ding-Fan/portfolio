@@ -86,6 +86,17 @@
             text-align: center;
             line-height: 20vw;
         }
+
+        @media screen and (min-width: 500px) {
+            .game-area {
+                width: 400px;
+            }
+            .button {
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+            }
+        }
     </style>
     <header>
         <nav>
@@ -190,7 +201,9 @@
         };
         let buttonLabels = ['a', 'b', 'c', 'd'];
         let randomPickButton = () => {
-            if (!changedFlag) { return; }
+            if (!changedFlag) {
+                return;
+            }
             let void_buttons = buttons_keys.filter(value => !buttons[value]);
             if (void_buttons.length) {
                 let theButton = void_buttons[Math.floor(Math.random() * void_buttons.length)];
@@ -202,7 +215,7 @@
             let result = [buttons[a], buttons[b], buttons[c], buttons[d]];
             result = result.filter(value => !!value);
             if (result.length === 4 && result[0] === result[1] && result[2] === result[3]) {
-                result = [result[0], result[2]];
+                result = [result[0] * 2, result[2] * 2];
             } else {
                 if (reverseFlag) {
                     while (result.length < 4) {
