@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <title>Good Yay!</title>
     <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.0/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 </head>
 
 <body>
@@ -302,6 +304,33 @@
             }
         }
         window.addEventListener('keyup', keyHandle);
+        // mobile support
+        let gameArea = document.querySelector('.game-area');
+
+        let hammer = new Hammer(gameData);
+
+        hammer.get('pan').set({
+            direction: Hammer.DIRECTION_ALL
+        });
+
+        hammer.on("panleft panright panup pandown", function(event) {
+            switch (event.type) {
+                case "panleft":
+                    rowSlide();
+                    break;
+                case "panright":
+                    rowSlide(true);
+                    break;
+                case "panup":
+                    columnSlide();
+                    break;
+                case "pandown":
+                    columnSlide(true);
+                    break;
+                default:
+                    break;
+            }
+        });
     </script>
 </body>
 
