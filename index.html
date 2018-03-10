@@ -309,22 +309,22 @@
 
         let hammer = new Hammer(gameArea);
 
-        hammer.get('pan').set({
+        hammer.get('swipe').set({
             direction: Hammer.DIRECTION_ALL
         });
 
-        hammer.on("panleft panright panup pandown", function(event) {
+        hammer.on("swipeleft swiperight swipeup swipedown", function(event) {
             switch (event.type) {
-                case "panleft":
+                case "swipeleft":
                     rowSlide();
                     break;
-                case "panright":
+                case "swiperight":
                     rowSlide(true);
                     break;
-                case "panup":
+                case "swipeup":
                     columnSlide();
                     break;
-                case "pandown":
+                case "swipedown":
                     columnSlide(true);
                     break;
                 default:
